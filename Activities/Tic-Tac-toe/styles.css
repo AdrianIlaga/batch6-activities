@@ -1,0 +1,136 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /* width: 100vw;
+    height: 100vh; */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+:root {
+    --cell-size: 7vw;
+    --mark-size: calc(var(--cell-size)*0.9);
+    
+}
+
+/*--- Tic-Tac-Toe Board ---*/
+#board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: solid black .2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Removes borders of board */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+.cell:nth-child(3n + 1) {
+    border-left: none;
+}
+.cell:nth-child(3n + 3) {
+    border-right: none;
+}
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+    border-bottom: none;
+}
+
+/* X's */
+.cell.x::before,
+.cell.x::after {
+    content: "";
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    background-color: black;
+    position: absolute;
+}
+.cell.x::before {
+    transform: rotate(45deg);
+}
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+/* O's */
+.cell.o::before,
+.cell.o::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+.cell.o::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+.cell.o::after {
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+/* Mark Hover */
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+/* Hovering when X's Turn */
+#board.x .cell:not(.x):not(.o):hover::before,
+#board.x .cell:not(.x):not(.o):hover::after {
+    content: "";
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    background-color: lightgrey;
+    position: absolute;
+}
+#board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+#board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+/* Hovering when O's Turn */
+#board.o .cell:not(.x):not(.o):hover::before,
+#board.o .cell:not(.x):not(.o):hover::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+#board.o .cell:not(.x):not(.o):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: lightgrey;
+}
+#board.o .cell:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+/*--- Buttons ---*/
+
+button {
+    display: none;
+}
