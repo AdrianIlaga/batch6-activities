@@ -8,28 +8,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="board">
-        <div class="cell" data-row="0" data-column="0"></div>
-        <div class="cell" data-row="0" data-column="1"></div>
-        <div class="cell" data-row="0" data-column="2"></div>
-        <div class="cell" data-row="1" data-column="0"></div>
-        <div class="cell" data-row="1" data-column="1"></div>
-        <div class="cell" data-row="1" data-column="2"></div>
-        <div class="cell" data-row="2" data-column="0"></div>
-        <div class="cell" data-row="2" data-column="1"></div>
-        <div class="cell" data-row="2" data-column="2"></div>
-    </div>
+    <div class="filter">
+        <div id="message-board">
+            <h1>
+                Tic-Tac-Toe
+            </h1>
+    
+            <h3 id="announcer">
+                It's X's turn
+            </h3>
+        </div>
+    
+        <div id="board">
+            <div class="cell" data-row="0" data-column="0"></div>
+            <div class="cell" data-row="0" data-column="1"></div>
+            <div class="cell" data-row="0" data-column="2"></div>
+            <div class="cell" data-row="1" data-column="0"></div>
+            <div class="cell" data-row="1" data-column="1"></div>
+            <div class="cell" data-row="1" data-column="2"></div>
+            <div class="cell" data-row="2" data-column="0"></div>
+            <div class="cell" data-row="2" data-column="1"></div>
+            <div class="cell" data-row="2" data-column="2"></div>
+        </div>
 
-    <button id="resetButton">Reset</button>
+        <div id="button-group">
+            <button class="move-button" id="previous" onclick="previousMove()">
+                &#10094;&#10094;&#10094;
+            </button>
 
-    <div id="moveButtons">
-        <button class="moveButton" id="previous">
-            Previous
-        </button>
+            <button id="reset" onclick="resetBoard()">Reset</button>
 
-        <button class="moveButton" id="next">
-            Next
-        </button>
+            <button class="move-button" id="next" onclick="nextMove()">
+                &#10095;&#10095;&#10095;
+            </button>
+        </div>
     </div>
 
     <script src="scripts.js"></script>

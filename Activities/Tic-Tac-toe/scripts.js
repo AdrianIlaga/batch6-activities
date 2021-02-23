@@ -1,3 +1,11 @@
+//Messages
+const xMessage = "It's X's turn"
+const oMessage = "It's O's turn"
+const drawMessage = "It's a draw!"
+const winMessage = " is the winner!"
+let announcer = document.getElementById("announcer")
+
+//Global Variables
 const xClass = 'x';
 const oClass = 'o';
 const empty = '';
@@ -16,6 +24,7 @@ let boardState = [
 let moves = [];
 let movesCounter = 0
 
+//Starts the game
 startGame();
 
 function startGame() {
@@ -23,6 +32,7 @@ function startGame() {
     setBoardClass();
 }
 
+//Adds event listner to each cell
 cellElements.forEach(cell => {
     cell.addEventListener('click', clickHandler, {once:true})
 });
@@ -36,7 +46,7 @@ function clickHandler() {
     //Updates the Board State
     updateBoard(cell, currentClass); //Done
     //Logs the Move
-    // logMove(); 
+    logMove(cell, currentClass); 
     //Checks if there's a winner
     checkWinner(currentClass);
     //Switches Turn
@@ -70,9 +80,11 @@ function clickHandler() {
         if (gameFinished === false) {
             if (circleTurn) {
                 board.classList.add(oClass);
+                announcer.innerHTML = oMessage;
             }
             else {
                 board.classList.add(xClass);
+                announcer.innerHTML = xMessage;
             }
         }
 
@@ -86,12 +98,17 @@ function clickHandler() {
     }
 
     //Saves the Boardstate Every Turn    !UNFINISHED
-    // function logMove() {
-    //     const move = boardState
-    //     moves[movesCounter] = move;
-    //     movesCounter ++;
-    //     console.log(moves)
-    // }
+    function logMove(cell, currentClass) {
+        moves[movesCounter] = 
+            [(movesCounter),
+            (currentClass),
+            (cell.dataset.row),
+            (cell.dataset.column)
+            ];
+        console.log(`Turn ${moves[movesCounter][0] + 1}: ${moves[movesCounter][1].toUpperCase()} marked row ${Number((moves[movesCounter][2])) + 1}, column ${Number(moves[movesCounter][3]) + 1}`);
+        movesCounter ++;
+
+    }
 
     //Check the Board for Winner 
     function checkWinner(currentClass) {
@@ -104,7 +121,7 @@ function clickHandler() {
             let c = boardState[row][2];
             if(a && a===b && b===c && gameFinished === false) {
                 console.log(winner + " " + "is the winner! (Row)")
-                gameFinished = true;
+                hasWinner();
                 break;
             }
         }
@@ -116,7 +133,7 @@ function clickHandler() {
             let c = boardState[2][column];
             if(a && a===b && b===c && gameFinished === false) {
                 console.log(winner + " " + "is the winner! (Column)")
-                gameFinished = true;
+                hasWinner();
                 break
             }
         }
@@ -128,7 +145,7 @@ function clickHandler() {
             let c = boardState[2][2];
             if(a && a===b && b===c) {
                 console.log(winner + " " + "is the winner! (Diagonal Left)")
-                gameFinished = true;
+                hasWinner();
             }
         }
         //Diagonal Win (Right)
@@ -138,8 +155,16 @@ function clickHandler() {
             let c = boardState[2][0];
             if(a && a===b && b===c) {
                 console.log(winner + " " + "is the winner! (Diagonal Right)")
-                gameFinished = true;
+                hasWinner();
             }
+        }
+
+        function hasWinner() {
+            gameFinished = true;
+            announcer.innerHTML = winner + winMessage;
+            previousButton.style.display = "flex"
+            nextButton.style.display = "flex"
+            nextButton.style.visibility = "hidden"
         }
 
         // Draw
@@ -152,9 +177,93 @@ function clickHandler() {
         }
         if (occupiedCells === 9 && gameFinished === false) {
             gameFinished = true;
+            announcer.innerHTML = drawMessage;
+            previousButton.style.display = "flex"
+            nextButton.style.display = "flex"
+            nextButton.style.visibility = "hidden"
             console.log("It's a draw")
         }
         else {
             occupiedCells = 0;
+        }
+    }
+
+// FUNCTIONS FOR BUTTONS
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const resetButton = document.getElementById("reset");
+
+    //Resets the board
+    function resetBoard() {
+        boardState = [
+            [empty, empty, empty],
+            [empty, empty, empty],
+            [empty, empty, empty]
+        ];
+        moves = [];
+        movesCounter = 0
+        gameFinished = false;
+        occupiedCells = 0
+        cellElements.forEach(cell => {
+            cell.classList.remove(xClass, oClass);
+            cell.addEventListener('click', clickHandler, {once:true});
+        })
+        previousButton.style.display = "none"
+            nextButton.style.display = "none"
+        startGame();
+    }
+
+    function previousMove() {
+        //Sets limits on moves
+        if (movesCounter === moves.length) {
+            movesCounter -= 1;
+        }
+        if (movesCounter < 0) {
+            movesCounter += 1;
+        }
+
+        if (movesCounter >= 0) {
+            nextButton.style.visibility="visible"
+            let moveData = moves[movesCounter];
+            const turn = moveData[1];
+            const row = moveData[2];
+            const column = moveData[3];
+            const cell = document.querySelector(`[data-row='${row}'][data-column='${column}']`);
+            cell.classList.remove(turn);
+            if (movesCounter === 0) {
+                previousButton.style.visibility = "hidden"
+                console.log("Reached first move");
+            }
+            else {
+                movesCounter --;
+            }
+        }
+    }
+
+    function nextMove() {
+        //Sets limits on moves
+        if (movesCounter === moves.length) {
+            movesCounter -= 1;
+        }
+        if (movesCounter < 0) {
+            movesCounter += 1;
+        }
+
+        if (movesCounter < moves.length) {
+            previousButton.style.visibility="visible"
+            let moveData = moves[movesCounter];
+            const turn = moveData[1];
+            const row = moveData[2];
+            const column = moveData[3];
+            const cell = document.querySelector(`[data-row='${row}'][data-column='${column}']`);
+            cell.classList.add(turn);
+            if (movesCounter === moves.length - 1) {
+                nextButton.style.visibility = "hidden"
+                console.log("Reached final move")
+            }
+            else {
+                movesCounter ++;
+            }
+            
         }
     }

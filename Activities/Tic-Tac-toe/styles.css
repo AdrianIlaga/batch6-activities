@@ -4,11 +4,22 @@
 
 body {
     margin: 0;
-    /* width: 100vw;
-    height: 100vh; */
-    display: grid;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/Classroom.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.filter {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
 }
 
 :root {
@@ -19,18 +30,20 @@ body {
 
 /*--- Tic-Tac-Toe Board ---*/
 #board {
-    width: 100vw;
-    height: 100vh;
+    width: 60vw;
+    height: 60vh;
     display: grid;
     justify-content: center;
     align-content: center;
     grid-template-columns: repeat(3, auto);
+    background-color: darkgreen;
+    border: rgb(195,128,21) solid 1vw;
 }
 
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    border: solid black .2vw;
+    border: solid white .2vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +74,7 @@ body {
     content: "";
     width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
-    background-color: black;
+    background-color: white;
     position: absolute;
 }
 .cell.x::before {
@@ -81,12 +94,12 @@ body {
 .cell.o::before {
     width: var(--mark-size);
     height: var(--mark-size);
-    background-color: black;
+    background-color: white;
 }
 .cell.o::after {
     width: calc(var(--mark-size) * 0.7);
     height: calc(var(--mark-size) * 0.7);
-    background-color: white;
+    background-color: darkgreen;
 }
 
 /* Mark Hover */
@@ -126,11 +139,77 @@ body {
 #board.o .cell:not(.x):not(.o):hover::after {
     width: calc(var(--mark-size) * 0.7);
     height: calc(var(--mark-size) * 0.7);
-    background-color: white;
+    background-color: darkgreen;
 }
 
 /*--- Buttons ---*/
-
 button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vw;
+    width: 10vw;
+    font-size: 2vw;
+}
+
+#button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    bottom: 0;
+    width: 60vw;
+    height: 20vh;
+    /* background-color: rgba(0,0,0,0.5); */
+}
+.move-button {
     display: none;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: white;
+    font-size: 3vw;
+}
+
+.move-button:hover {
+    filter:drop-shadow(.1vw .1vw 1vw #ccc);
+    font-size: 4vw;
+}
+
+#reset {
+    display: flex;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: white;
+    font-size: 3vw;
+}
+
+#reset:hover {
+    font-size: 4vw;
+    filter:drop-shadow(.1vw .1vw 1vw #ccc);
+}
+
+/*--- Message Board ---*/
+#message-board {
+    width: 60vw;
+    height: 20vh;
+    color: white;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgba(0,0,0,0.5); */
+}
+
+#message-board h1{
+    font-size: 3vw;
+    line-height: 0.8vw;
+    color: rgb(195,128,21)
+}
+
+#message-board h3{
+    font-size: 2vw;
+    line-height: 0.8vw;
 }
