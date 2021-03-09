@@ -2,6 +2,26 @@
 //If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.
 //-James 1:5
 
+const instructions = `
+Greetings User! Here are the useable Commands!
+1. createDeck(); => Creates a new deck
+2. shuffleDeck(); => Shuffles the created deck
+3. arrangeBySuit(); => Arranges the shuffled deck by suit
+4. arrangeByAscending(); => Arranges the shuffled deck from Ace to King
+5. arrangeByDescending(); => Arranges the shuffled deck from King to Ace
+6. dealCard(); => Deals one card from the shuffled deck
+7. dealFiveCards(); => Deals five cards from the shuffled deck and identifes the type of hand
+8. dealOneUntilGone(); => deals a card until the shuffled deck is empty
+9. dealFiveUntilGone(); => deals five cards until the shuffled deck is empty
+10. printInstructions(); => prints the instructions
+`;
+
+console.log(instructions);
+
+function printInstructions() {
+    console.log(instructions);
+}
+
 //Test Hands
 let royalFlush = ["♥A","♥10","♥J","♥Q","♥K"];
 let straightFlush = ["♥5", "♥6", "♥7", "♥8", "♥9"];
@@ -386,4 +406,18 @@ function determineHand(
         }
         return royal;
     }
+}
+
+function dealOneUntilGone() {
+    do {
+        dealCard();
+    }
+    while (shuffledDeck.length > 0);
+}
+
+function dealFiveUntilGone () {
+    do {
+        console.log(dealFiveCards());
+    }
+    while (shuffledDeck.length >= 5);
 }
