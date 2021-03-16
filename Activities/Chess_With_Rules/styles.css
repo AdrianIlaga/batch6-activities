@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css?family=MedievalSharp");
+
+@media screen and (min-width: 901px) {
+
+    body {
+        padding: 0px;
+        margin: 0px;
+        display: grid;
+        grid-template-rows: 5vw auto;
+        justify-content: center;
+        align-content: center;
+        background-image: url("images/battle_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 25%;
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+    /* Title */
+    h1 {
+        font-size: 4vw;
+        margin-top: 1.5vw;
+        margin-bottom: 1.5vw;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        color:#335B96;
+        font-family: MedievalSharp;
+    }
+
+    .board {
+        display: grid;
+        grid-template-columns: 10% 80% 10%; ;
+        grid-template-rows: 10% 80% 10% ;
+        width: 36vw;
+        height: 36vw;
+        background-color: rgb(197, 162, 114);
+        border: #966F33 solid 2vw;
+
+    }
+    /* End Title */
+
+    /* Border Boxes */
+    .character-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+        font-size: 1.5vw;
+    }
+
+    .filler-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+    }
+
+    #top {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 1 / 1 / 2 / 4;
+        grid-template-columns: repeat(10, 10%);
+
+    }
+
+    #bottom {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 3 / 1 / 4 / 4;
+        grid-template-columns: repeat(10, 10%);
+
+    }
+
+    #left {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 2 / 1 / 3 / 2;
+        grid-template-rows: repeat(8, 12.5%);
+    }
+
+    #right {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 2 / 3 / 3 / 4;
+        grid-template-rows: repeat(8, 12.5%);
+    }
+    /* End Border */
+
+    /* Inner Box */
+    #inner {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        gap: 0;
+        grid-template-rows: repeat(8, 12.5%);
+        grid-template-columns: 100%;
+        grid-area: 2 / 2 / 3 / 3;
+        justify-content: center;
+        align-content: center;
+        z-index: 1;
+        
+    }
+
+    .inner-row {
+        display: grid;
+        grid-template-columns: repeat(8, 12.5%);
+        grid-template-rows: 100%;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .inner-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+        font-size: 3vw;
+    }
+
+    .inner-box:hover{
+        background-color: white;
+        font-size: 3.5vw;
+    }
+
+    .light-box {
+        background-color: burlywood;   
+    }
+
+    .dark-box {
+        background-color: #966F33;
+    }
+    /* End Inner */
+
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        padding: 0px;
+        margin: 0px;
+        display: grid;
+        grid-template-rows: 7.5vw auto;
+        justify-content: center;
+        align-content: center;
+        background-image: url("images/battle_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 25%;
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+    /* Title */
+    h1 {
+        font-size: 6vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        color:#335B96;
+        font-family: MedievalSharp;
+    }
+
+    .board {
+        display: grid;
+        grid-template-columns: 10% 80% 10%; ;
+        grid-template-rows: 10% 80% 10% ;
+        width: 75vw;
+        height: 75vw;
+        background-color: rgb(197, 162, 114);
+        border: #966F33 solid 4vw;
+
+    }
+    /* End Title */
+
+    /* Border Boxes */
+    .character-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+        font-size: 2.5vw;
+    }
+
+    .filler-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+    }
+
+    #top {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 1 / 1 / 2 / 4;
+        grid-template-columns: repeat(10, 10%);
+
+    }
+
+    #bottom {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 3 / 1 / 4 / 4;
+        grid-template-columns: repeat(10, 10%);
+
+    }
+
+    #left {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 2 / 1 / 3 / 2;
+        grid-template-rows: repeat(8, 12.5%);
+    }
+
+    #right {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-area: 2 / 3 / 3 / 4;
+        grid-template-rows: repeat(8, 12.5%);
+    }
+    /* End Border */
+
+    /* Inner Box */
+    #inner {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        gap: 0;
+        grid-template-rows: repeat(8, 12.5%);
+        grid-template-columns: 100%;
+        grid-area: 2 / 2 / 3 / 3;
+        justify-content: center;
+        align-content: center;
+        z-index: 1;
+        
+    }
+
+    .inner-row {
+        display: grid;
+        grid-template-columns: repeat(8, 12.5%);
+        grid-template-rows: 100%;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .inner-box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+        font-size: 5vw;
+    }
+
+    .inner-box:hover{
+        background-color: white;
+        font-size: 6.5vw;
+    }
+
+    .light-box {
+        background-color: burlywood;   
+    }
+
+    .dark-box {
+        background-color: #966F33;
+    }
+    /* End Inner */
+}

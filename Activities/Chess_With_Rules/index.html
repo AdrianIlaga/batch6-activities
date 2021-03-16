@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>
+        Chess with Grid
+    </h1>
+
+    <div class="board">
+            
+        <div id="top">
+            <!-- Letters Row -->
+            <div class="filler-box"></div>
+            <div class="character-box">a</div>
+            <div class="character-box">b</div>
+            <div class="character-box">c</div>
+            <div class="character-box">d</div>
+            <div class="character-box">e</div>
+            <div class="character-box">f</div>
+            <div class="character-box">g</div>
+            <div class="character-box">h</div>
+            <div class="filler-box"></div>
+        </div>
+
+        <div id="left">
+            <div class="character-box">8</div>
+            <div class="character-box">7</div>
+            <div class="character-box">6</div>
+            <div class="character-box">5</div>
+            <div class="character-box">4</div>
+            <div class="character-box">3</div>
+            <div class="character-box">2</div>
+            <div class="character-box">1</div>
+        </div>
+
+        <div id="right">
+            <div class="character-box">8</div>
+            <div class="character-box">7</div>
+            <div class="character-box">6</div>
+            <div class="character-box">5</div>
+            <div class="character-box">4</div>
+            <div class="character-box">3</div>
+            <div class="character-box">2</div>
+            <div class="character-box">1</div>
+        </div>
+
+        <div id="bottom">
+            <!-- Letters Row -->
+            <div class="filler-box"></div>
+            <div class="character-box">a</div>
+            <div class="character-box">b</div>
+            <div class="character-box">c</div>
+            <div class="character-box">d</div>
+            <div class="character-box">e</div>
+            <div class="character-box">f</div>
+            <div class="character-box">g</div>
+            <div class="character-box">h</div>
+            <div class="filler-box"></div>
+       </div>
+
+        <div id="inner">
+            <!-- ROW 1 -->
+            <div class="inner-row">
+                <div class="light-box inner-box" draggable="true" id="a8"></div>
+                <div class="dark-box inner-box" draggable="true" id="b8"></div>
+                <div class="light-box inner-box" draggable="true" id="c8"></div>
+                <div class="dark-box inner-box" draggable="true" id="d8"></div>
+                <div class="light-box inner-box" draggable="true" id="e8"></div>
+                <div class="dark-box inner-box" draggable="true" id="f8"></div>
+                <div class="light-box inner-box" draggable="true" id="g8"></div>
+                <div class="dark-box inner-box" draggable="true" id="h8"></div>
+            </div>
+            <!-- ROW 2 -->
+            <div class="inner-row">
+                <div class="dark-box inner-box" draggable="true" id="a7"></div>
+                <div class="light-box inner-box" draggable="true" id="b7"></div>
+                <div class="dark-box inner-box" draggable="true" id="c7"></div>
+                <div class="light-box inner-box" draggable="true" id="d7"></div>
+                <div class="dark-box inner-box" draggable="true" id="e7"></div>
+                <div class="light-box inner-box" draggable="true" id="f7"></div>
+                <div class="dark-box inner-box" draggable="true" id="g7"></div>
+                <div class="light-box inner-box" draggable="true" id="h7"></div>
+            </div>
+
+            <!-- ROW 3 -->  
+            <div class="inner-row">
+                <div class="light-box inner-box" draggable="true" id="a6"></div>
+                <div class="dark-box inner-box" draggable="true" id="b6"></div>
+                <div class="light-box inner-box" draggable="true" id="c6"></div>
+                <div class="dark-box inner-box" draggable="true" id="d6"></div>
+                <div class="light-box inner-box" draggable="true" id="e6"></div>
+                <div class="dark-box inner-box" draggable="true" id="f6"></div>
+                <div class="light-box inner-box" draggable="true" id="g6"></div>
+                <div class="dark-box inner-box" draggable="true" id="h6"></div>
+            </div>            
+            <!-- ROW 4 -->      
+            <div class="inner-row">          
+                <div class="dark-box inner-box" draggable="true" id="a5"></div>
+                <div class="light-box inner-box" draggable="true" id="b5"></div>
+                <div class="dark-box inner-box" draggable="true" id="c5"></div>
+                <div class="light-box inner-box" draggable="true" id="d5"></div>
+                <div class="dark-box inner-box" draggable="true" id="e5"></div>
+                <div class="light-box inner-box" draggable="true" id="f5"></div>
+                <div class="dark-box inner-box" draggable="true" id="g5"></div>
+                <div class="light-box inner-box" draggable="true" id="h5"></div>
+            </div>
+            <!-- ROW 5 -->     
+            <div class="inner-row">
+                <div class="light-box inner-box" draggable="true" id="a4"></div>
+                <div class="dark-box inner-box" draggable="true" id="b4"></div>
+                <div class="light-box inner-box" draggable="true" id="c4"></div>
+                <div class="dark-box inner-box" draggable="true" id="d4"></div>
+                <div class="light-box inner-box" draggable="true" id="e4"></div>
+                <div class="dark-box inner-box" draggable="true" id="f4"></div>
+                <div class="light-box inner-box" draggable="true" id="g4"></div>
+                <div class="dark-box inner-box" draggable="true" id="h4"></div>
+            </div>          
+
+            <!-- ROW 6 -->     
+            <div class="inner-row">
+                <div class="dark-box inner-box" draggable="true" id="a3"></div>
+                <div class="light-box inner-box" draggable="true" id="b3"></div>
+                <div class="dark-box inner-box" draggable="true" id="c3"></div>
+                <div class="light-box inner-box" draggable="true" id="d3"></div>
+                <div class="dark-box inner-box" draggable="true" id="e3"></div>
+                <div class="light-box inner-box" draggable="true" id="f3"></div>
+                <div class="dark-box inner-box" draggable="true" id="g3"></div>
+                <div class="light-box inner-box" draggable="true" id="h3"></div>
+            </div>          
+
+            <!-- ROW 7 --> 
+            <div class="inner-row">
+                <div class="light-box inner-box" draggable="true" id="a2"></div>
+                <div class="dark-box inner-box" draggable="true" id="b2"></div>
+                <div class="light-box inner-box" draggable="true" id="c2"></div>
+                <div class="dark-box inner-box" draggable="true" id="d2"></div>
+                <div class="light-box inner-box" draggable="true" id="e2"></div>
+                <div class="dark-box inner-box" draggable="true" id="f2"></div>
+                <div class="light-box inner-box" draggable="true" id="g2"></div>
+                <div class="dark-box inner-box" draggable="true" id="h2"></div>
+            </div>              
+
+            <!-- ROW 8 -->    
+            <div class="inner-row">
+                <div class="dark-box inner-box" draggable="true" id="a1"></div>
+                <div class="light-box inner-box" draggable="true" id="b1"></div>
+                <div class="dark-box inner-box" draggable="true" id="c1"></div>
+                <div class="light-box inner-box" draggable="true" id="d1"></div>
+                <div class="dark-box inner-box" draggable="true" id="e1"></div>
+                <div class="light-box inner-box" draggable="true" id="f1"></div>
+                <div class="dark-box inner-box" draggable="true" id="g1"></div>
+                <div class="light-box inner-box" draggable="true" id="h1"></div>
+            </div>          
+
+        </div>
+            
+    </div>
+
+    <script src="scripts.js"></script>
+    
+</body>
+</html>
+
