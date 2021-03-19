@@ -25,6 +25,12 @@ let currentScore = document.getElementById("current-0");
 let totalScore = document.getElementById("score-0");
 let playerPanel = document.getElementsByClassName("player-0-panel")[0];
 
+//Sound Effects:
+let rollSFX = new Audio("sounds/dice_SFX.mp3");
+let loseSFX = new Audio("sounds/lose_SFX.wav");
+let holdSFX = new Audio("sounds/hold_SFX.wav");
+let winSFX = new Audio("sounds/win_SFX.mp3");
+
 //Dice Roll Animation
 function animateRoll () {
     let rollAnimation = document.getElementsByClassName("dice")[0];
@@ -38,6 +44,7 @@ function animateRoll () {
 function rollDice () {
     console.log(player.name);
     animateRoll();
+    rollSFX.play();
     let dice;
     dice = Math.floor(Math.random() * Math.floor(6)) + 1;
     showDice(dice);
@@ -46,17 +53,19 @@ function rollDice () {
         currentScore.innerHTML = "" + player.roundScore;
     }
     else {
+        loseSFX.play();
         switchPlayer();
     }
 }
 
 //Hold Function
 function hold () {
+    
     player.globalScore += player.roundScore;
     totalScore.innerHTML = player.globalScore;
     player.roundScore = 0;
     if (player.globalScore >= 100) {
-        //Insert message for player to win here
+        winSFX.play();
         console.log(`${player.name} has won!`)
         let winScreen = document.getElementsByClassName("win-screen")[0];
         let message = document.getElementById("message");
@@ -65,6 +74,7 @@ function hold () {
         winScreen.style.display = "flex";
     }
     else {
+        holdSFX.play();
         switchPlayer();
     } 
 }
@@ -116,7 +126,7 @@ function newGame () {
     currentScore = document.getElementById("current-0");
     totalScore = document.getElementById("score-0");
     playerPanel = document.getElementsByClassName("player-0-panel")[0];
-    //  //Hides win message
+    //Hides win message
      let winScreen = document.getElementsByClassName("win-screen")[0];
      winScreen.style.display = "none";
 }
