@@ -153,6 +153,7 @@ i {
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
 
+/* Win Screen */
 .win-screen {
     display: none;
     flex-direction: column;
@@ -177,4 +178,17 @@ i {
     position: relative;
     display: flex;
     color: white;
+}
+/* Animations */
+.animate-roll {
+    animation: roll 0.5s;
+}
+
+@keyframes roll{
+    from {
+        transform:translateX(-50%) rotate(0deg);
+      }
+    to {
+        transform:translateX(-50%) rotate(360deg);
+      }
 }

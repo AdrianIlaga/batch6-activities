@@ -25,9 +25,19 @@ let currentScore = document.getElementById("current-0");
 let totalScore = document.getElementById("score-0");
 let playerPanel = document.getElementsByClassName("player-0-panel")[0];
 
+//Dice Roll Animation
+function animateRoll () {
+    let rollAnimation = document.getElementsByClassName("dice")[0];
+    rollAnimation.classList.add("animate-roll");
+    rollAnimation.style.animation = 'none';
+    rollAnimation.offsetHeight;
+    rollAnimation.style.animation = null;
+}
+
 //Dice Roll Function
 function rollDice () {
     console.log(player.name);
+    animateRoll();
     let dice;
     dice = Math.floor(Math.random() * Math.floor(6)) + 1;
     showDice(dice);
