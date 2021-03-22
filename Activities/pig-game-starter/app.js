@@ -11,12 +11,12 @@ GAME RULES:
 
 //Global Variables:
 let playerOne = {
-    name: "Player 1",
+    name: "PLAYER 1",
     globalScore: 0,
     roundScore: 0
 }
 let playerTwo = {
-    name: "Player 2",
+    name: "PLAYER 2",
     globalScore: 0,
     roundScore: 0
 }
@@ -46,7 +46,7 @@ function rollDice () {
     animateRoll();
     rollSFX.play();
     let dice;
-    dice = Math.floor(Math.random() * Math.floor(6)) + 1;
+    dice = Math.floor(Math.random() * 6) + 1;
     showDice(dice);
     if (dice > 1) {
         player.roundScore += dice;
@@ -69,7 +69,7 @@ function hold () {
         console.log(`${player.name} has won!`)
         let winScreen = document.getElementsByClassName("win-screen")[0];
         let message = document.getElementById("message");
-        message.innerHTML = `${player.name} has won!`
+        message.innerHTML = `${player.name} WON!`
         console.log(winScreen)
         winScreen.style.display = "flex";
     }
@@ -88,26 +88,28 @@ function showDice (dice) {
 function switchPlayer () {
     player.roundScore = 0;
     currentScore.innerHTML = player.roundScore;
-    playerPanel.classList.remove("active");
+    playerPanel.classList.remove("active0", "active1");
     switch (player) {
         case playerOne:
             player = playerTwo;
             currentScore = document.getElementById("current-1");
             totalScore = document.getElementById("score-1");
             playerPanel = document.getElementsByClassName("player-1-panel")[0];
+            playerPanel.classList.add("active1");
             break;
         case playerTwo:
             player = playerOne;
             currentScore = document.getElementById("current-0");
             totalScore = document.getElementById("score-0");
             playerPanel = document.getElementsByClassName("player-0-panel")[0];
+            playerPanel.classList.add("active0");
             break;
     }
-    playerPanel.classList.add("active");
+    
     console.log("Switching Player")
 }
 
-function newGame () {
+function newGame () { 
     //Reset Player One
     playerOne.globalScore = 0;
     playerOne.roundScore = 0;
@@ -119,8 +121,8 @@ function newGame () {
     document.getElementById("score-1").innerHTML = 0;
     document.getElementById("current-1").innerHTML = 0;
     //Removes Active from P2 and sets active to P1
-    document.getElementsByClassName("player-1-panel")[0].classList.remove("active");
-    document.getElementsByClassName("player-0-panel")[0].classList.add("active");
+    document.getElementsByClassName("player-1-panel")[0].classList.remove("active1");
+    document.getElementsByClassName("player-0-panel")[0].classList.add("active0");
     //Set Variables to Player One
     player = playerOne;
     currentScore = document.getElementById("current-0");

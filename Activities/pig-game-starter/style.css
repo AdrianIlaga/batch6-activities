@@ -16,7 +16,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(images/back.jpg);
+    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(images/casino-background.jpg);
     background-size: cover;
     background-position: center;
     font-family: Lato;
@@ -62,7 +62,18 @@ body {
     position: relative;
 }
 
-.player-score {
+/* Player 1 */
+
+.player0-current-box {
+    background-color: #EB4D4D;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+}
+
+.player0-score {
     text-align: center;
     font-size: 80px;
     font-weight: 100;
@@ -70,10 +81,21 @@ body {
     margin-bottom: 130px;
 }
 
-.active { background-color: #f7f7f7; }
-.active .player-name { font-weight: 300; }
+.player-current-label {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #fff;
+}
 
-.active .player-name::after {
+.player-current-score {
+    font-size: 30px;
+}
+
+.active0 { background-color: #f7f7f7; }
+.active0 .player-name { font-weight: 300; color: #EB4D4D;}
+
+.active0 .player-name::after {
     content: "\2022";
     font-size: 47px;
     position: absolute;
@@ -83,8 +105,9 @@ body {
     
 }
 
-.player-current-box {
-    background-color: #EB4D4D;
+/* Player 2 */
+.player1-current-box {
+    background-color: #3498db;
     color: #fff;
     width: 40%;
     margin: 0 auto;
@@ -92,15 +115,25 @@ body {
     text-align: center;
 }
 
-.player-current-label {
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: #222;
+.player1-score {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 100;
+    color: #3498db;
+    margin-bottom: 130px;
 }
 
-.player-current-score {
-    font-size: 30px;
+.active1 { background-color: #f7f7f7; }
+.active1 .player-name { font-weight: 300; color: #3498db;}
+
+.active1 .player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    color: #3498db;
+    top: -7px;
+    right: 10px;
+    
 }
 
 button {
