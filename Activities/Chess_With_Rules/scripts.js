@@ -61,13 +61,20 @@ const pieceInfo = {
     Pawn : {
         blackLocations: ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"],
         blackCode: "&#9823;",
-        blackMoveSet: [10, 20],
+        moveSet: [
+            //Black: 
+            10, //Movement
+            20, //Starting Move
+            11, 9, //Eating
+            //White:
+            -10, //Movement
+            -20, //Starting Move
+            -11, -9 //Eating
+        ],
         whiteLocations: ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"],
         whiteCode: "&#9817;",
-        whiteMoveSet: [-10, -20]
     }
 };
-
 
 
 //Class for creating piece
@@ -124,7 +131,6 @@ let hasClicked = false; //Checks if a piece has been clicked or not
 let selectedPiece; //Contains the piece object
 let selectedBox; //Contains the box selected
 let selectedBoxId; //Contains the id of the selected box
-let originalBG; //Contains the original color of a box
 let whoseTurn = 'white' //Contains whose turn it is
 
 //Array for Eaten pieces
@@ -150,20 +156,20 @@ function movement() {
         if (checkTurn(this.value.color)) {
             console.log("Selected a Piece");
             console.log(selectedBoxId + selectedPiece.name);
-            selectedBox.style.backgroundColor = "white";
+            selectedBox.classList.add("selected");
             hasClicked = true;
         }
     }
 
     //Selecting another piece          Note: Add checker to limit the moves to only those possible
-    else if(this.innerHTML && hasClicked === true) {
+    else if(this.innerHTML && hasClicked === true && selectedBox !== this) {
         //If piece is same color
         if (checkTurn(this.value.color)) {
             console.log("Selected Another Piece");
-            selectedBox.style.backgroundColor = originalBG;
+            selectedBox.classList.remove("selected");
             getInfo(this);
             console.log(selectedPiece.code + this.id);
-            selectedBox.style.backgroundColor = "white";
+            selectedBox.classList.add("selected");
         }
         //If piece is different color   (Eating Logic)
         else {
@@ -171,7 +177,7 @@ function movement() {
             //Stores eaten piece to array
             capturePiece(this.value);
             //Removes piece from previous box and places them here
-            selectedBox.style.backgroundColor = originalBG;
+            selectedBox.classList.remove("selected");
             updatePiece(selectedPiece);
             placeInfo(this);
             removeInfo();
@@ -183,7 +189,7 @@ function movement() {
     //Deseleting a piece
     else if(selectedBox === this) {
         console.log("Deselected a Piece")
-        this.style.backgroundColor = originalBG;
+        selectedBox.classList.remove("selected");
         resetInfo();
         
     }
@@ -193,7 +199,7 @@ function movement() {
         console.log("Set Down a Piece");
         updatePiece(selectedPiece);
         placeInfo(this);
-        selectedBox.style.backgroundColor = originalBG;
+        selectedBox.classList.remove("selected");
         removeInfo();
         console.log(this.id + selectedPiece.code);
         resetInfo();  
@@ -217,7 +223,6 @@ function movement() {
             selectedBox = box;
             selectedPiece = selectedBox.value;
             selectedBoxId = selectedBox.id;
-            originalBG = selectedBox.style.backgroundColor
         }
 
         //Resets all the variables
@@ -225,7 +230,6 @@ function movement() {
             selectedPiece = "";
             selectedBox = "";
             selectedBoxId = "";
-            originalBG = "";
             hasClicked = false;
         }
 

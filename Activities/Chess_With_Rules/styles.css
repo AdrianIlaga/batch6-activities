@@ -279,3 +279,9 @@
     }
     /* End Inner */
 }
+
+/* Chess With Rules Exclusive */
+
+.selected{
+    background-color: white;
+}
