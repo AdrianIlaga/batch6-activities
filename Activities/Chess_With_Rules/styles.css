@@ -282,6 +282,10 @@
 
 /* Chess With Rules Exclusive */
 
-.selected{
+.selected {
     background-color: white;
+}
+
+.possible-moves {
+    background-color: lightgray;
 }
