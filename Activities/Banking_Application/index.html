@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bank of Dameria</title>
+</head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <a id="navbar-left" class="navbar-section" href="javascript: void(0)">BANK OF DAMERIA</a>
+
+            <ul id="navbar-right" class="navbar-section">
+                <li><a class="section-button" id="nb1" href="#user-list">User List</a></li>
+                <li><a class="section-button" id="nb2" href="#user-add">Add Account</a></li>
+                <li><a id="transaction" href="javascript: void(0)">Transactions &#9776;</a></li>
+        
+            </ul>
+        </div>
+
+        <div class="transaction" id="hamburger-bar">
+            <a class="section-button" id="nb3" href="#deposit">Deposit</a>
+            <a class="section-button" id="nb4" href="#withdraw">Withdraw</a>
+            <a class="section-button" id="nb5" href="#transfer">Transfer</a>
+        </div>
+
+        <!-- Home Page -->
+        <!-- <section id="home">
+            <div class="container">
+                <h1>HOME PAGE!</h1>
+            </div>
+        </section> -->
+
+        <!-- CORE FEATURES -->
+
+        <!-- List of Users -->
+        <section id="user-list">
+            <div class="container">
+                <h1>
+                    List of Users
+                </h1>
+
+                <div class="sort-list">
+                    <a href="javascript: void(0)" id="sort-reset">Reset</a>  
+                    |
+                    <a href="javascript: void(0)" id="sort-by-name">Sort by Name</a>  
+                    |   
+                    <a href="javascript: void(0)" id="sort-by-money">Sort by Money</a> 
+                </div>
+
+                <table id="users-table">
+                    <tr class="head-row">
+                        <th>Name</th>
+                        <th>Balance</th>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Add User -->
+        <section id="user-add">
+            <div class="container">
+
+                <form class="form" action="#user-list" method="get">
+                    <h1>Add New Account</h1>
+
+                    <div class="form-item">
+                        <!-- <label for="fname" id="fname-label"><h3>First Name:</h3></label> -->
+                        <input type="text" id="fname" placeholder="First Name (Required)" required>
+                    </div>
+
+                    <div class="form-item">
+                        <!-- <label for="mname" id="mname-label"><h3>Middle Initial:</h3></label> -->
+                        <input type="text" id="mname" placeholder="Middle Initial (Optional)" maxlength="1">
+                    </div>
+
+                    <div class="form-item">
+                        <!-- <label for="lname" id="lname-label"><h3>Last Name:</h3></label> -->
+                        <input type="text" id="lname" placeholder="Last Name (Required)" required>
+                    </div>
+
+                    <div class="form-item">
+                        <!-- <label for="balance" id="balance-label"><h3>Starting Balance:</h3></label> -->
+                        <input type="number" id="balance" placeholder="Starting Balance in Pesos" min="0">
+                    </div>
+
+                    <input id="create-user-button" type="submit" value="Create">
+
+                    <div class="form-item">
+                        
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
+
+        <!-- TRANSACTIONS -->
+        <!-- Deposit -->
+        <section id="deposit">
+            <div class="container">
+                
+                <form class="form" action="#deposit" method="get">
+                    
+                    <h1>Deposit Money</h1>
+                    <div class="form-item">
+                        <label for="deposit-user" id="deposit-label"><h3>User:</h3></label>
+                        <select type="text" id="deposit-user" required>
+                        </select>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="deposit-amount" id="deposit-amount-label"><h3>Amount:</h3></label>
+                        <input type="number" id="deposit-amount" placeholder="Balance in Pesos" value="0" min="0" required>
+                    </div>
+                    
+                    <div class="form-item">
+                        <label for="deposit-balance" id="deposit-balance-label"><h3>Current Balance:</h3></label>
+                        <input type="text" id="deposit-balance" placeholder="User Balance" readonly>
+                    </div>
+                    
+                    <input id="deposit-button" type="submit" value="Deposit">
+
+                    <div class="form-item">
+
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Withdraw -->
+        <section id="withdraw">
+            <div class="container">
+                
+                <form class="form" action="#withdraw" method="get">
+                    <h1>Withdraw Money</h1>
+                    <div class="form-item">
+                        <label for="withdraw-user" id="withdraw-label"><h3>User:</h3></label>
+                        <select type="text" id="withdraw-user" required>
+                        </select>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="withdraw-amount" id="withdraw-amount-label"><h3>Amount:</h3></label>
+                        <input type="number" id="withdraw-amount" placeholder="Balance in Pesos" value="0" min="0" required>
+                    </div>
+                    
+                    <div class="form-item">
+                        <label for="withdraw-balance" id="withdraw-balance-label"><h3>Current Balance:</h3></label>
+                        <input type="text" id="withdraw-balance" placeholder="User Balance" readonly>
+                    </div>
+                    
+                    <input id="withdraw-button" type="submit" value="Withdraw">
+                    
+                    <div class="form-item">
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    
+        <!-- Transfer -->
+        <section id="transfer">
+
+            <div class="container">
+
+                <form class="transfer-form" action="#withdraw" method="get">
+                    <h1>Transfer Money</h1>
+
+                    <div class="form">
+                        <div class="form-section">
+                            <div class="form-item">
+                                <label for="sender-user" id="sender-user-label"><h3>From:</h3></label>
+                                <select type="text" id="sender-user" required>
+                                </select>
+                            </div>
+        
+                            <div class="form-item">
+                                <label for="sender-balance" id="sender-balance-label"><h3>Sender Balance:</h3></label>
+                                <input type="text" id="sender-balance" placeholder="Sender Balance" readonly>
+                            </div>
+            
+                            <div class="form-item">
+                                <label for="sender-amount" id="sender-amount-label"><h3>Amount:</h3></label>
+                                <input type="number" id="sender-amount" placeholder="Balance in Pesos" value="0" min="0" required>
+                            </div>
+        
+                        </div>
+        
+                        <div class="form-section">
+                            <div class="form-item">
+                                <label for="receiver-user" id="receiver-user-label"><h3>To:</h3></label>
+                                <select type="text" id="receiver-user" required>
+                                </select>
+                            </div>
+                            
+                            <div class="form-item">
+                                <label for="receiver-balance" id="receiver-balance-label"><h3>Reciever Balance:</h3></label>
+                                <input type="text" id="receiver-balance" placeholder="Reciever Balance" readonly>
+                            </div>
+        
+                            <div class="form-item">
+                                <input id="transfer-button" type="submit" value="Transfer">
+                            </div>
+
+                        </div>
+        
+                    </div>
+
+                    <div class="spacer">
+                            
+                    </div>
+                    
+                </form>
+
+            </div>
+
+        </section>
+
+        <script src="scripts.js"></script>
+
+    </body>
+</html>

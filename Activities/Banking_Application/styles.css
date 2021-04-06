@@ -1,0 +1,372 @@
+/* ################################# */
+/* ALL PAGES */
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+:root {
+    /* Navbar */
+    --nav-height: 5vw;
+    --left-font: calc(var(--nav-height) * 0.4);
+    --right-font: calc(var(--nav-height) * 0.3);
+    --hamburger-height: 10vw;
+
+    /* Transactions */
+    --transaction-form-height: 60vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+section {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    scroll-margin-top: var(--nav-height);
+    margin-top: calc(-1*(var(--hamburger-height)));
+    width: 80vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+/* Forms */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: teal;
+}
+
+.form .form-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -1%;
+    width: 80%;
+    height: 5vw;
+
+}
+
+.form .form-item input{
+    width: 100%;
+    height: 2vh;
+    font-size: 1vw;
+    padding: 0.5vw;
+}
+
+.form input[type="submit"] {
+    position: relative;
+    width: 8vw;
+    height: 3vw;
+    left: -1%;
+    font-size: 1vw;
+}
+
+select{
+    width: 102%;
+    height: 4vh;
+    font-size: 1vw;
+    padding: 0.5vw;
+}
+
+
+.form .form-item label {
+    padding-bottom: 0.5vw;
+}
+
+.form h1, .transfer-form h1 {
+    font-size: 2vw;
+}
+
+.form h3 {
+    font-size: 1vw;
+}
+
+/* ################################# */
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    height: var(--nav-height);
+    width: 100vw;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+.navbar .navbar-section {
+    padding: calc(var(--nav-height) * 0.4);
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Navbar Left Side */
+.navbar #navbar-left {
+    font-size: var(--left-font);
+}
+
+/* Navbar Right Side */
+.navbar #navbar-right {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: var(--right-font);
+
+}
+
+.section-button:hover {
+    color: teal;
+}
+
+.navbar .active {
+    color: teal;
+}
+
+.navbar li {
+    list-style-type: none;
+    padding: calc(var(--nav-height) * 0.2);
+}
+
+/* Navbar Hamburger */
+
+.transaction {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 5vw;
+    left: 85vw;
+    background-color: black;
+    width: 15vw;
+    height: var(--hamburger-height);
+    font-size: calc(var(--left-font) * 0.65);
+    align-items: center;
+    justify-content: space-around;
+    visibility: hidden;
+    z-index: 9999;
+}
+
+.transaction a{
+    text-decoration: none;
+    color: white;
+}
+
+
+ 
+/* ################################## */
+
+/* HOME PAGE */
+
+/* #home {
+    display: flex;
+    height: 90vh;
+}
+
+#home .container {
+    align-items: center;
+    justify-content: center;
+} */
+
+/* ################################## */
+
+/* USERS LIST */
+#user-list {
+    display: flex;
+    height: 90vh;
+}
+
+#user-list .container {
+    height: 100%;
+    padding-bottom: 5vw;
+}
+
+#user-list .sort-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 3vh;
+    width: 22vw;
+    font-size: 1.2vw;
+}
+
+#user-list .sort-list a{
+    text-decoration: none;
+}
+
+#user-list h1 {
+    padding-top: 5vw;
+    padding-bottom: 2.5vw;
+    font-size: 2vw;
+}
+
+#user-list table {
+    position: relative;
+    text-align: center;
+    left: 20%;
+    width: 60%;
+}
+
+#user-list table, th, td{
+    border: 0.1vw solid black;
+    height: 2vw;
+    font-size: 1.2vw;
+}
+
+/* ################################## */
+
+/* CREATE USER */
+#user-add {
+    height: 90vh;
+}
+
+#user-add h1 {
+    position: relative;
+    /* left: 34%; */
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+}
+
+#user-add .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 25%;
+    top: 10%;
+    width: 50%;
+    height: 50vh;
+}
+
+#user-add .form input[type="submit"] {
+    position: relative;
+    width: 6vw;
+    height: 4vw;
+    top: 5%;
+}
+
+/* ################################## */
+
+/* TRANSACTIONS */
+
+/* Deposit */
+#deposit {
+    height: 90vh;
+}
+
+#deposit h1 {
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+}
+
+#deposit .form {
+    position: relative;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    height: var(--transaction-form-height);
+}
+
+#deposit .form input[type="submit"] {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    top: 5%;
+}
+
+/* Withdraw */
+#withdraw {
+    height: 90vh;
+}
+
+#withdraw h1 {
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+}
+
+#withdraw .form {
+    position: relative;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    height: var(--transaction-form-height);
+}
+
+#withdraw .form input[type="submit"] {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    top: 5%;
+}
+
+/* Transfer */
+#transfer {
+    height: 90vh;
+}
+
+#transfer h1 {
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+}
+
+#transfer .form {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    
+}
+
+.transfer-form {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: teal;
+    width: 80%;
+    height: calc(var(--transaction-form-height)*0.8);
+}
+
+
+#transfer .form .form-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+#transfer .form .form-section input[type="submit"] {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    left: 40%;
+    top: 20%;
+}
