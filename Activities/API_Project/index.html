@@ -8,10 +8,12 @@
     <title>Books</title>
 </head>
 <body>
+    <!-- Navbar -->
     <div class="nav-bar">
         
     </div>
 
+    <!-- Search Section -->
     <section id="search-section">
         <form class="form" method="GET">
             <div class="form-item">
@@ -19,18 +21,34 @@
                 <input type="text" id="search" placeholder="search for books">
                 <input type="button" value="Search" id="search-button">
             </div>
-
-            
         </form>
+        <div class="loader loader1"></div>
     </section>
 
+    <!-- Saved Books Section -->
+    <section id="saved-section">
+        <div id="saved-area">
+            <!-- Display Saved Books Here -->
+        </div>
+    </section>
+
+    <!-- Results Section -->
     <section id=results-section>
+
+        <div class="pagination">
+            <!-- Insert pagination buttons here -->
+        </div>
+    
         <div id="results-area">
             <!-- Insert Results Here -->
-            <!-- <div class="result">
-                
-            </div> -->
+            
         </div>
+        <div class="loader loader2"></div>
+
+        <div class="pagination">
+            <!-- Insert pagination buttons here -->
+        </div>
+
     </section>
     <script src="scripts.js"></script>
 </body>
