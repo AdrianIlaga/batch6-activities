@@ -8,7 +8,7 @@ let currentQuery = "";
 let startIndex = 0;
 let totalItems = 0;
 let maxPagination = 6; //Cannot be more than 40
-const itemLimit = 300;
+const itemLimit = maxPagination * 50;
 let ids = getIds();
 let list_of_books = [];
 
@@ -170,7 +170,7 @@ function addLinks(result, data, id) {
     link.href = data;
     link.setAttribute('target', '_blank');
     link.innerHTML = "Link"
-    link.className = "links";
+    link.className = "actions";
     
     //Add/Remove Button
     let button;
@@ -272,9 +272,9 @@ function saveBook() {
         const remove_button = removeButton(className);
         targetDiv.replaceChild(remove_button, save_button);
     }
-    console.log("Add Buttons Replaced");
     //Adds to Saved Section
     buildSaved();
+    alert("Book Saved");
 }
 
 function removeBook() {
@@ -296,14 +296,13 @@ function removeBook() {
     console.log("Remove Buttons Replaced");
     //Removes from Saved Section
     buildSaved();
+    alert("Book Removed");
 }
 
 // Search Functions-------------------------------------------------------------------------------------
 
     // Search Function
     async function search(query) {
-        console.log(startIndex);
-        clearPagination();
         currentQuery = query;
         resetList();
         const response = await fetch(
@@ -318,16 +317,20 @@ function removeBook() {
         }
 
         pushBooks(bookObjects);
+        
     }
 
     // Places books in list
     async function pushBooks(bookObjects) {
         list_of_books = [];
         const books = await bookObjects.items;
-        
+        showResults();
+        clearPagination();
+        pagination();
         for (const book in books) {
             const bookId = books[book].id;
-            const volumeInfo = await getAllData(bookId);
+            // const volumeInfo = await getAllData(bookId);
+            const volumeInfo = books[book].volumeInfo;
             // console.log(volumeInfo);
             let infoList = ["title", "authors", "imageLinks", "categories", "canonicalVolumeLink", "description", "id", "placeNumber", "publishedDate"];
             for(const info in infoList) {
@@ -363,7 +366,7 @@ function removeBook() {
             // new_book.buildBook();
         };
         hideLoader();
-        window.location.replace("#results-section");
+        redirect("#results-section");
 
         list_of_books.forEach((book) => {
             // book.buildBook();
@@ -371,7 +374,7 @@ function removeBook() {
         });
 
         console.log(list_of_books);
-        pagination();
+        
     }
 
         //Resets List of Books
@@ -387,37 +390,32 @@ function removeBook() {
             return data.volumeInfo;
         }
 
-    //Clears Pagination
-    function clearPagination() {
-        const pagination = document.getElementsByClassName("pagination");
-        for (i=0; i<pagination.length; i++) {
-            pagination[i].innerHTML = "";
-        }
-    }    
+   
     //#################################################################
     //Implements Pagination if there are more than 6 results
     function pagination() {
-        maxIndex = Math.ceil(totalItems/maxPagination);
-        console.log(maxIndex);
         if(paginationRequired()) {
             console.log(`There are ${totalItems} results`)
             makePagButtons();
         }
     }
 
+    //Clears Pagination
+    function clearPagination() {
+        const pagination = document.getElementsByClassName("pagination");
+        for (i=0; i<pagination.length; i++) {
+            pagination[i].innerHTML = "";
+        }
+    } 
+
     function makePagButtons() {
         // Previous Button
-        if(notFirstPage()) {
-            makePrevButton();
-        }
-
+        makePrevButton();
         // Pages List
         makePagesButtons();
-
         // Next Button
-        if (notLastPage()) {
-            makeNextButton();
-        }
+        makeNextButton();
+        
     }
 
     function makePrevButton() {
@@ -426,8 +424,13 @@ function removeBook() {
             const prev = document.createElement("button");
             prev.classList = "prev";
             prev.addEventListener("click", prevResults);
-            prev.innerHTML = "Previous";
+            prev.innerHTML = "Prev";
+            if(!notFirstPage()) {
+                prev.style.visibility = "hidden";
+            }
             pagination[i].appendChild(prev);
+
+         
         }
     }
 
@@ -435,10 +438,15 @@ function removeBook() {
         const pagination = document.getElementsByClassName("pagination");
         for (i=0; i<pagination.length; i++) {
             const next = document.createElement("button");
-            next.classList = "prev";
+            next.classList = "next";
             next.addEventListener("click", nextResults);
             next.innerHTML = "Next";
+            if(!notLastPage()) {
+                next.style.visibility = "hidden";
+            }
             pagination[i].appendChild(next);
+
+      
         }
     }
     
@@ -447,6 +455,7 @@ function removeBook() {
         function makeButton(index, has_ellipses) {
             for (let i=0; i < pagination.length; i++) {
                 const button = document.createElement("button");
+                button.className = "pag-button"
                 button.value = index;
                 button.innerHTML = getPageNum(button.value);
                 button.addEventListener("click", () => {
@@ -460,22 +469,27 @@ function removeBook() {
                 if (has_ellipses) {
                     pagination[i].appendChild(ellipses);
                 }
+
+                if (index == startIndex) {
+                    button.classList.add("active-button")
+                    console.log(button);
+                }
                 pagination[i].appendChild(button);  
             }  
         }
         let indeces = [];
         //If Pages are More Than Four
         if (moreThanFour()) {
-            //If on First Page
-            if(startIndex === 0) {
-                indeces = [0, startIndex +  (maxPagination), startIndex + (2*maxPagination), startIndex + (3*maxPagination), lastPageIndex()]
+            //If on First, Second, or Third
+            if(startIndex >= 0 && startIndex < (3*maxPagination)) {
+                indeces = [0, (maxPagination),  (2*maxPagination),  (3*maxPagination), lastPageIndex()]
             }
             // If on Pages 47-50
             else if(startIndex <= itemLimit && startIndex >= (itemLimit - 3*maxPagination)) {
                 indeces = [0, lastPageIndex() - (3*maxPagination), lastPageIndex() - (2*maxPagination), lastPageIndex() - (maxPagination), lastPageIndex()]
             }
             else {
-                indeces = [0, startIndex, startIndex + maxPagination, startIndex + (2*maxPagination), lastPageIndex()]
+                indeces = [0, startIndex - maxPagination, startIndex, startIndex + maxPagination, lastPageIndex()]
             }
         }
         else {
@@ -499,6 +513,7 @@ function removeBook() {
     
 
     //###############################################################################
+    //Functions for Pag buttons
     //Previous Results Button
     function prevResults(){
         event.preventDefault()
@@ -529,6 +544,7 @@ function removeBook() {
     }
 
     //##################################################### 
+    // Functions for Loaders
     function showSearchLoader() {
         let loaders = document.getElementsByClassName("loader1");
         for (let i=0; i<loaders.length; i++) {
@@ -553,12 +569,31 @@ function removeBook() {
 
     //#######################################################
 
+    // Misc Function 
+
+    function redirect(id) {
+        window.location.replace(`${id}`);
+    }
+
+    function showResults() {
+        let results = document.getElementById("results-section");
+        resultsHeader();
+        results.style.display = "flex";
+    }
+
+    function resultsHeader() {
+        let header = document.getElementById("results-header");
+        header.innerHTML = `Results for "${currentQuery}"`
+    }
+
 
 // Saved Functions-------------------------------------------------------------------------------------
 
 function buildSaved() {
-    let saved_section = document.getElementById("saved-area");
-    saved_section.innerHTML = "";
+    let no_books = document.getElementById("no-books");
+    let header = document.getElementById("saved-header");
+    let saved_area = document.getElementById("saved-area");
+    saved_area.innerHTML = "";
     let books = [];
     for (let i=0; i<localStorage.length; i++) {
         book = pullData(localStorage.key(i));
@@ -567,10 +602,20 @@ function buildSaved() {
     books = books.sort((a, b) => {
         return new Date(a.time) - new Date(b.time) ;
     });
-    for (let i=0; i<books.length; i++) {
-        book = books[i];
-        buildBook(book, "saved-area")
+    if(books.length > 0) {
+        no_books.style.display = "none";
+        header.style.display = "flex";
+        for (let i=0; i<books.length; i++) {
+            book = books[i];
+            buildBook(book, "saved-area")
+        }
     }
+    else {
+        header.style.display = "none";
+        no_books.style.display = "flex";
+    }
+
+
 }
 //Adding Event Listeners------------------------------------------------------------------------------------------------
 const searchButton = document.getElementById("search-button");

@@ -10,30 +10,85 @@
 <body>
     <!-- Navbar -->
     <div class="nav-bar">
-        
+        <div class="nav-left">
+            <a href="#" class="nav-left">THE BOOK WYRM</a>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <a href="#search-section">Search</a>
+                    <a href="#about-section">About</a>
+                    <a href="#saved-section">Saved Books</a>
+                </li>
+            </ul>
+        </div>
+       
     </div>
 
     <!-- Search Section -->
     <section id="search-section">
+        <div class="container">
+            <h1>Explore the Hoard</h1>
+            <p>
+                Search the contents of the Book Wyrm's hoard for any knowledge you seek
+            </p>
+        </div>
+    
         <form class="form" method="GET">
+           
             <div class="form-item">
                 <!-- <label for="search">Search:</label> -->
                 <input type="text" id="search" placeholder="search for books">
-                <input type="button" value="Search" id="search-button">
             </div>
+            <input type="button" value="Search" id="search-button">
         </form>
         <div class="loader loader1"></div>
     </section>
 
+    <div class="spacer"></div>
+
+    <!-- About Section -->
+    <section id=about-section>
+        <div class="container">
+            <h1>
+                What is This Place?
+            </h1>
+    
+            <p>
+                You have entered the lair of the Book Wyrm, a mighty dragon who hoards books instead of gold. 
+                Here you can access his vast collection of books and magazines you might possibly want or need. 
+                You are even free to mark books that interest you so that you can find it easily later.
+                Just don't steal anything. It is his hoard and will get mad if you take anything. 
+                If you want a copy of it yourself you can head on to the google books store and get it there.
+            </p>
+        </div>
+    </section>
+
+    <div class="spacer"></div>
+
     <!-- Saved Books Section -->
     <section id="saved-section">
+        <h1 id=saved-header>
+            Saved Books
+        </h1>
+
+        <p id=no-books>
+            You currently have no books saved
+        </p>
+
         <div id="saved-area">
             <!-- Display Saved Books Here -->
         </div>
     </section>
 
+    <div class="spacer"></div>
+
     <!-- Results Section -->
     <section id=results-section>
+
+        <h1 id="results-header">
+
+        </h1>
 
         <div class="pagination">
             <!-- Insert pagination buttons here -->
