@@ -115,7 +115,7 @@ button{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh;
+    height: 95vh;
 
 }
 
@@ -202,7 +202,7 @@ button{
     animation: spin 2s linear infinite;
     visibility: hidden;
     position: absolute;
-    top: 50%;
+    top: 60%;
   }
 
   @keyframes spin {
@@ -221,7 +221,7 @@ button{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh;
+    height: 95vh;
 }
 
 #about-section .container {
@@ -257,7 +257,7 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 90vh;
+    min-height: 95vh;
 }
 
 #no-books {
